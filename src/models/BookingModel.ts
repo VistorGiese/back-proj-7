@@ -48,6 +48,10 @@ class BookingModel extends Model {
   observacoes_solicitante?: string;
   observacoes_resposta?: string;
   motivo_cancelamento?: string;
+  // Campos Google Calendar
+  id_evento_google?: string;
+  calendario_sincronizado!: boolean;
+  ultima_sincronizacao?: Date;
 }
 
 BookingModel.init(
@@ -174,6 +178,22 @@ BookingModel.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    // Campos Google Calendar
+    id_evento_google: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      comment: 'ID do evento no Google Calendar'
+    },
+    calendario_sincronizado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      comment: 'Se o agendamento está sincronizado com Google Calendar'
+    },
+    ultima_sincronizacao: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      comment: 'Última sincronização com Google Calendar'
+    },
   },
   {
     sequelize,
@@ -184,3 +204,5 @@ BookingModel.init(
 );
 
 export default BookingModel;
+
+

@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'toca_aqui_v4',
+  process.env.DB_NAME || 'toca_aqui_v3',
   process.env.DB_USER || 'root',
   process.env.DB_PASSWORD || '',
   {

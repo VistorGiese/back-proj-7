@@ -19,6 +19,10 @@ class UserModel extends Model {
   ativo!: boolean;
   data_criacao!: Date;
   data_atualizacao!: Date;
+  // Campos Google Calendar
+  google_token_acesso?: string;
+  google_token_atualizado?: string;
+  google_token_expira_em?: Date;
 }
 
 UserModel.init(
@@ -67,6 +71,22 @@ UserModel.init(
     data_atualizacao: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
+    },
+    // Campos Google Calendar
+    google_token_acesso: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      comment: 'Token de acesso do Google Calendar'
+    },
+    google_token_atualizado: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      comment: 'Token de refresh do Google Calendar'
+    },
+    google_token_expira_em: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      comment: 'Data de expiração do token Google'
     },
   },
   {
