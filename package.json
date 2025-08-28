@@ -11,6 +11,7 @@
     "db:seed": "ts-node src/scripts/seedDatabase.ts",
     "db:reset": "ts-node src/scripts/resetDatabase.ts",
     "test:google": "ts-node src/scripts/testGoogleCalendar.ts",
+    "test:calendar": "ts-node src/scripts/testCalendarServices.ts",
     "verify:oauth": "ts-node src/scripts/verifyOAuthConfig.ts",
     "test": "jest",
     "test:watch": "jest --watch",

@@ -102,7 +102,6 @@ export const authorizeUserType = (allowedTypes: UserType[]) => {
  */
 export const optionalAuth = (
   req: AuthenticatedRequest,
-  res: Response,
   next: NextFunction
 ): void => {
   const authHeader = req.headers.authorization;

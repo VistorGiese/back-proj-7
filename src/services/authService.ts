@@ -126,7 +126,7 @@ export class AuthService {
         throw new Error(`Erro HTTP: ${response.status}`);
       }
       
-      const userInfo = await response.json();
+      const userInfo = await response.json() as { id: string; email: string; name: string; picture?: string };
       
       return {
         id: userInfo.id,
@@ -189,7 +189,7 @@ export class AuthService {
       const newTokens: GoogleTokens = {
         access_token: credentials.access_token,
         refresh_token: credentials.refresh_token || user.google_token_atualizado,
-        expiry_date: credentials.expiry_date
+        expiry_date: credentials.expiry_date ?? undefined
       };
 
       await this.saveGoogleTokens(userId, newTokens);
@@ -214,7 +214,7 @@ export class AuthService {
 
       // Verificar se token ainda é válido
       const now = new Date();
-      const expiresAt = user.google_token_atualizado;
+      const expiresAt = user.google_token_atualizado ? new Date(user.google_token_atualizado) : null;
       
       if (expiresAt && now >= expiresAt) {
         // Token expirado, tentar renovar

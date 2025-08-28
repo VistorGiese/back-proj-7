@@ -171,12 +171,12 @@ export class GoogleOAuthService {
       // Verificar se token ainda é válido
       const now = new Date();
       const expiresAt = user.google_token_atualizado;
-      const tokenValid = !expiresAt || now < expiresAt;
+      const tokenValid = !expiresAt || now < new Date(expiresAt);
 
       return {
         connected: true,
         tokenValid,
-        expiresAt: expiresAt || undefined
+        expiresAt: expiresAt ? new Date(expiresAt) : undefined
       };
     } catch (error) {
       console.error('Erro ao verificar status da conexão Google:', error);

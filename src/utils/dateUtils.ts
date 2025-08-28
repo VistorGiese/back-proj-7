@@ -8,7 +8,7 @@ export const BRAZIL_TIMEZONE = 'America/Sao_Paulo';
 /**
  * Converter data para formato Google Calendar (ISO com timezone)
  */
-export const toGoogleCalendarFormat = (date: Date, timezone: string = BRAZIL_TIMEZONE): string => {
+export const toGoogleCalendarFormat = (date: Date, _timezone: string = BRAZIL_TIMEZONE): string => {
   return date.toISOString();
 };
 

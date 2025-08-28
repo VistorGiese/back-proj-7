@@ -14,7 +14,7 @@ export const validateEmail = (email: string): boolean => {
    * Validar senha (mínimo 6 caracteres)
    */
   export const validatePassword = (password: string): boolean => {
-    return password && password.length >= 6;
+    return !!password && password.length >= 6;
   };
   
   /**
